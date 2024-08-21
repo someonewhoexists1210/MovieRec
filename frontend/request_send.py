@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = os.getenv('API_KEY')
+API_KEY = os.getenv('APIKEY')
 base_url = f'https://www.omdbapi.com/?apikey={API_KEY}&'
 
 def get_movie_info(movie_name):
