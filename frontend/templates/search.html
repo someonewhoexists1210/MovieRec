@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    {% if movies %}
+        <ul>
+            {% for movie in movies %}
+                <li>
+                    <h2>{{ movie.Title }}</h2>
+                    <p>Year: {{ movie.Year }}</p>
+                    <p>Genre: {{ movie.Genre }}</p>
+                    <p>Language: {{ movie.Language }}</p>
+                    <p>Country: {{ movie.Country }}</p>
+                    <p>Rating: {{ movie.imdbRating }}</p>
+                    <img src="{{ movie.Poster }}" alt="{{ movie.Title }} Poster">
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No movies found.</p>
+    {% endif %}
+ </body>

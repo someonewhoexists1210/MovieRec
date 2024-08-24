@@ -10,3 +10,8 @@ def get_movie_info(movie_name, year=None):
     url = base_url + f't={movie_name}' + (f'&y={year}' if year else '')
     response = requests.get(url).json()
     return response
+
+def search_movies(query):
+    url = base_url + f's={query}'
+    response = requests.get(url).json()
+    return response['Search'] if response['Response'] == 'True' else []
