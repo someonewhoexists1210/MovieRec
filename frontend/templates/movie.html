@@ -1,16 +1,25 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Movie Recommendation</title>
+    <link rel="stylesheet" href="{% static 'css/movie.css' %}">
 </head>
 <body>
     <h1>Movie Recommendation</h1>
-    <h2>{{ movie.title }}</h2>
-    <p>Year: {{ movie.year }}</p>
-    <p>Genre: {{ movie.genre }}</p>
-    <p>Language: {{ movie.language }}</p>
-    <p>Country: {{ movie.country }}</p>
-    <p>Rating: {{ movie.rating }}</p>
-    <img src="{{ movie.image }}">
+    <div class="movie-details">
+        <div class="movie-info">
+            <h2>{{ movie.title }}</h2>
+            <p>Year: {{ movie.year }}</p>
+            <p>Genre: {{ movie.genre }}</p>
+            <p>Language: {{ movie.language }}</p>
+            <p>Country: {{ movie.country }}</p>
+            <p>Rating: {{ movie.rating }}</p>
+        </div>
+        <div class="movie-image">
+            <img src="{{ movie.image }}">
+        </div>
+    </div>
 </body>
 </html>

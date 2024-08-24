@@ -18,7 +18,6 @@ def search_movies_view(request, query):
             mov = get_movie_info(movies[i]['Title'], movies[i]['Year'])
             if '–' in mov['Year']:
                 mov['Year'] = mov['Year'].split('–')[0]
-            print(mov['Year'])
             movie = Movie(
             title=mov['Title'],
             year=mov['Year'],
