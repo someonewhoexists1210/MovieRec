@@ -1,14 +1,20 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <title>Movie Recommendation</title>
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
 </head>
 <body>
-    <h1>Movie Recommendation</h1>
-    <h2>{{ movie.title }}</h2>
-    <p>Genre: {{ movie.genre }}</p>
-    <p>Language: {{ movie.language }}</p>
-    <p>Country: {{ movie.country }}</p>
-    <p>Rating: {{ movie.rating }}</p>
+    <h1>Welcome to Movie Recommendation!</h1>
+    <form method="POST" action="{% url 'movie_search' %}">
+        {% csrf_token %}
+        <label for="movie_title">Enter a movie title:</label>
+        <input type="text" id="movie_title" name="movie_title" required>
+        <br>
+        <label for="movie_year">Enter a movie year:</label>
+        <input type="number" id="movie_year" name="movie_year">
+        <button type="submit">Search</button>
+    </form>
 </body>
 </html>
