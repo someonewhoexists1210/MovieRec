@@ -5,8 +5,16 @@
     <meta charset="UTF-8">
     <title>Movie Recommendation</title>
     <link rel="stylesheet" href="{% static 'css/movie.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'filter_movies' %}">Filter Movies</a></li>
+        </ul>
+    </nav>
     <h1>Movie Recommendation</h1>
     <div class="movie-details">
         <div class="movie-info">

@@ -1,11 +1,18 @@
-<!-- filter.html -->
-
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <title>Filter Movies</title>
+    <link rel="stylesheet" href="{% static 'css/filtered.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'filter_movies' %}">Filter Movies</a></li>
+        </ul>
+    </nav>
     <h1>Filter Movies</h1>
 
     <form method="POST" action="{% url 'filter_movies' %}">

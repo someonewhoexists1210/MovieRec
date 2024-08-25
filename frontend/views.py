@@ -75,20 +75,6 @@ def filter_movies(request):
             movies = movies.filter(language__contains=language)
 
         movies = movies.order_by('-rating')
-        for mov in movies:
-            print(mov.title)
-            print(mov.year)
-            print(mov.genre)
-            print(mov.language)
-            print(mov.rating)
-            print()
-
         return render(request, 'search.html', {'movies': movies})
     
     return render(request, 'filter.html')
-
-def delete(request):
-    for movie in Movie.objects.all():
-        if Movie.objects.filter(title=movie.title, image=movie.image).count() > 1:
-            movie.delete()
-    return HttpResponse('Deleted dup movies')
