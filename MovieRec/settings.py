@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-mp#98(1cjmpxp*mll$j)0i6t12(tl(68*=a9rfa54)@ft6wa2t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['movie.someonewhoexists.hackclub.app']
+CSRF_TRUSTED_ORIGINS = ['https://movie.someonewhoexists.hackclub.app']
 
 
 # Application definition
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'MovieRec.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'frontend/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,7 +117,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'frontend/static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

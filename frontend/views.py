@@ -48,6 +48,8 @@ def get_movie(request):
         title=data['Title'], 
         year=data['Year'],
         genre=data['Genre'], 
+        plot=data['Plot'],
+        actors=data['Actors'],
         language=data['Language'], 
         country=data['Country'], 
         rating=data['imdbRating'],
