@@ -13,22 +13,23 @@ def search_movies_view(request, query):
 
     for i in range(len(movies)):
         if Movie.objects.filter(title=movies[i]['Title']).exists():
-            movies[i]['movie'] = Movie.objects.get(title=movies[i]['Title'])
+            movies[i] = Movie.objects.get(title=movies[i]['Title'])
         else:
             mov = get_movie_info(movies[i]['Title'], movies[i]['Year'])
             if '–' in mov['Year']:
                 mov['Year'] = mov['Year'].split('–')[0]
             movie = Movie(
-            title=mov['Title'],
-            year=mov['Year'],
-            genre=mov['Genre'],
-            language=mov['Language'],
-            country=mov['Country'],
-            rating=mov['imdbRating'],
-            image=mov['Poster']
+                title=mov['Title'],
+                year=mov['Year'],
+                genre=mov['Genre'],
+                language=mov['Language'],
+                country=mov['Country'],
+                rating=mov['imdbRating'],
+                image=mov['Poster']
             )
             movie.save()
-            movies[i]['movie'] = movie
+            movies[i] = movie
+        
 
     return render(request, 'search.html', {'movies': movies})
 
@@ -54,3 +55,40 @@ def get_movie(request):
     )
     movie.save()
     return render(request, 'movie.html', {'movie': movie})
+
+def filter_movies(request):
+    if request.method == 'POST':
+        genre = request.POST["genre"]
+        year = request.POST["year"]
+        rating = request.POST["rating"]
+        movies = Movie.objects.all()
+        language = request.POST["language"]
+        if genre != 'all':
+            movies = movies.filter(genre__contains=genre)
+        if year != 'all':
+            if year == 'older':
+                movies = movies.filter(year__lt=2019)
+            movies = movies.filter(year=year)
+        if rating != 'all':
+            movies = movies.filter(rating__gte=float(rating))
+        if language != 'all':
+            movies = movies.filter(language__contains=language)
+
+        movies = movies.order_by('-rating')
+        for mov in movies:
+            print(mov.title)
+            print(mov.year)
+            print(mov.genre)
+            print(mov.language)
+            print(mov.rating)
+            print()
+
+        return render(request, 'search.html', {'movies': movies})
+    
+    return render(request, 'filter.html')
+
+def delete(request):
+    for movie in Movie.objects.all():
+        if Movie.objects.filter(title=movie.title, image=movie.image).count() > 1:
+            movie.delete()
+    return HttpResponse('Deleted dup movies')

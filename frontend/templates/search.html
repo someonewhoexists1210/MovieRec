@@ -12,13 +12,13 @@
         <ul>
             {% for movie in movies %}
                 <li>
-                    <h2>{{ movie.Title }}</h2>
-                    <p>Year: {{ movie.Year }}</p>
-                    <p>Genre: {{ movie.Genre }}</p>
-                    <p>Language: {{ movie.Language }}</p>
-                    <p>Country: {{ movie.Country }}</p>
-                    <p>Rating: {{ movie.imdbRating }}</p>
-                    <img src="{{ movie.Poster }}" alt="{{ movie.Title }} Poster">
+                    <h2>{{ movie.title }}</h2>
+                    <p>Year: {{ movie.year }}</p>
+                    <p>Genre: {{ movie.genre }}</p>
+                    <p>Language: {{ movie.language }}</p>
+                    <p>Country: {{ movie.country }}</p>
+                    <p>Rating: {{ movie.rating }}</p>
+                    <img src="{{ movie.image }}" alt="{{ movie.title }} Poster">
                 </li>
             {% endfor %}
         </ul>
