@@ -76,6 +76,9 @@ Visit http://127.0.0.1:8000/ in your web browser to view the application.
 ## API Usage
 This project uses the OMDb API to fetch movie data. Ensure you have a valid API key from OMDb and include it in the .env file as shown in the installation steps.
 
+## Screenshot
+![alt text](image.png)
+
 ## Contributing
 Contributions are welcome! Please fork this repository and submit a pull request with your changes.
 
